@@ -24,7 +24,9 @@
             android:layout_height="wrap_content"
             android:text="HoneySprays"
             android:textColor="#FFFFFF"
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            android:padding="10dp"
+            />
 
         <ImageView
             android:layout_width="100dp"
@@ -60,7 +62,7 @@
             android:textAllCaps="false"
             android:layout_marginTop="10dp"
             android:backgroundTint="#FFEB3B"
-            android:textColor="#FFFBF6" />
+            android:textColor="@color/black" />
 
     </LinearLayout>
 
