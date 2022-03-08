@@ -2,6 +2,7 @@ package com.example.teamhoney_sprayerreporting_2022;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -10,9 +11,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 public class MainActivity extends AppCompatActivity{
-    private EditText usernameView;
-    private EditText passwordView;
+    private TextInputLayout usernameView;
+    private TextInputLayout passwordView;
 
 
     @Override
