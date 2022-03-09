@@ -80,7 +80,8 @@
             android:text="@string/sign_in"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:onClick="signIn"/>
 
     </LinearLayout>
 
