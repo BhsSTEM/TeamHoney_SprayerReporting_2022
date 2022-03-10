@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamHoney_SprayerReporting_2022">
         <activity
+            android:name=".DeleteUser"
+            android:exported="false" />
+        <activity
             android:name=".AddUser"
             android:exported="false" />
         <activity
