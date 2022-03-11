@@ -8,6 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/logo_icon_round"
         android:supportsRtl="true"
+        android:screenOrientation="portrait"
         android:theme="@style/Theme.TeamHoney_SprayerReporting_2022">
         <activity
             android:name=".MainActivity"
