@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity{
         username = usernameView.getEditText().getText().toString();
         //noinspection ConstantConditions
         password = passwordView.getEditText().getText().toString();
-        Log.d("test", username);
-        Log.d("test", password);
         //Code to check username and password
         if(TextUtils.isEmpty(usernameView.getEditText().getText().toString()) || TextUtils.isEmpty(passwordView.getEditText().getText().toString())){
             Toast.makeText(MainActivity.this, "Please enter username and password", Toast.LENGTH_LONG).show();
@@ -72,11 +70,11 @@ public class MainActivity extends AppCompatActivity{
                         Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_LONG).show();
                     }
                     else{
-                        Toast.makeText(MainActivity.this, "Invalid Password", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Invalid username or password", Toast.LENGTH_LONG).show();
                     }
                 }
                 else{
-                    Toast.makeText(MainActivity.this, "Username not found", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Invalid username or password", Toast.LENGTH_LONG).show();
                 }
             }
         }
