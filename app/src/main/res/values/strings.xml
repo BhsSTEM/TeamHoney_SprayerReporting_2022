@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TeamHoney_SprayerReporting_2022</string>
+    <string name="title">HoneySprays</string>
+    <string name="usernameText">Username</string>
+    <string name="passwordText">Password</string>
+    <string name="sign_in">Sign in</string>
 </resources>
