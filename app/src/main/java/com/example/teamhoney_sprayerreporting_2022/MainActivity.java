@@ -32,13 +32,6 @@ public class MainActivity extends AppCompatActivity{
     private ArrayList<String> passwords = new ArrayList<>();
 
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
-public class MainActivity extends AppCompatActivity {
-    private Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,16 +80,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener(){
-        @Override
-            public void onClick(View v){
-            openAddUser();
-        }
-        });
-    }
-    public void openAddUser(){
-        Intent intent = new Intent(this, AddUser.class);
-        startActivity(intent);
     }
 }

@@ -88,38 +88,4 @@
             android:onClick="signIn"/>
 
     </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="320dp"
-        android:layout_height="61dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Would you like to add or delete a user?"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="132dp"
-        android:layout_height="89dp"
-        android:layout_marginStart="208dp"
-        android:layout_marginTop="200dp"
-        android:text="Add"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="133dp"
-        android:layout_height="92dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="200dp"
-        android:text="Delete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
