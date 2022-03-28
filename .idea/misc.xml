@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
+        <entry key="..\:/Users/ejnew/OneDrive/Documents/GitHub/TeamHoney_SprayerReporting_2022/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1675" />
+        <entry key="..\:/Users/ejnew/OneDrive/Documents/GitHub/TeamHoney_SprayerReporting_2022/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1675" />
+        <entry key="..\:/Users/ejnew/OneDrive/Documents/GitHub/TeamHoney_SprayerReporting_2022/app/src/main/res/layout/Custom_Layout.xml" value="0.1213768115942029" />
+        <entry key="..\:/Users/ejnew/OneDrive/Documents/GitHub/TeamHoney_SprayerReporting_2022/app/src/main/res/layout/activity_main.xml" value="0.1213768115942029" />
+        <entry key="..\:/Users/ejnew/OneDrive/Documents/GitHub/TeamHoney_SprayerReporting_2022/app/src/main/res/layout/custom_layout.xml" value="0.1" />
+        <entry key="..\:/Users/ejnew/OneDrive/Documents/GitHub/TeamHoney_SprayerReporting_2022/app/src/main/res/layout/databse_layout.xml" value="0.1" />
+        <entry key="..\:/Users/jakeb/AndroidStudioProjects/TeamHoney_SprayerReporting_2022/app/src/main/res/layout/activity_main.xml" value="0.264" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+
         <entry key="app/src/main/res/layout/activity_add_user.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_admin_permissions_page.xml" value="0.13541666666666666" />
         <entry key="app/src/main/res/layout/activity_admin_selection.xml" value="0.1" />
