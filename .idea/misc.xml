@@ -5,9 +5,9 @@
       <map>
         <entry key="app/src/main/res/layout/activity_add_user.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_admin_permissions_page.xml" value="0.13541666666666666" />
-        <entry key="app/src/main/res/layout/activity_admin_selection.xml" value="0.13541666666666666" />
+        <entry key="app/src/main/res/layout/activity_admin_selection.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_delete_user.xml" value="0.2187347412109375" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.21739130434782608" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/adduser.xml" value="0.1" />
         <entry key="app/src/main/res/layout/adminadd.xml" value="0.31301208496093746" />
       </map>

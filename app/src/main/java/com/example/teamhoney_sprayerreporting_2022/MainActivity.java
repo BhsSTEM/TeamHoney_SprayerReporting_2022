@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity{
         usernames.add("admin");
         passwords.add("password");
     }
-    public void openAddUser(){
+    public void openAdminSelection(){
         Intent intent = new Intent(this, AdminSelection.class);
         startActivity(intent);
     }
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity{
                     if(passwordView.getEditText().getText().toString().equals(passwords.get(i))){
                         Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_LONG).show();
                         if(usernames.get(i).equals("admin")){
-                            openAddUser();
+                            openAdminSelection();
                         }
                     }
                     else{

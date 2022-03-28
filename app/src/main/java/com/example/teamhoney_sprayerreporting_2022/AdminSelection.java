@@ -8,22 +8,28 @@ import android.view.View;
 import android.widget.Button;
 
 public class AdminSelection extends AppCompatActivity {
-    private Button button;
+    private Button add;
+    private Button delete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener(){
+        setContentView(R.layout.activity_admin_selection);
+        delete = (Button) findViewById(R.id.delete_button);
+        add = (Button) findViewById(R.id.add_button);
+        /*add.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 openAddUser();
             }
-        });
+        });*/
     }
-    public void openAddUser(){
+    public void openAddUser(View view) {
         Intent intent = new Intent(this, AddUser.class);
+        startActivity(intent);
+    }
+
+    public void openDeleteUser(View view) {
+        Intent intent = new Intent(this, DeleteUser.class);
         startActivity(intent);
     }
 }

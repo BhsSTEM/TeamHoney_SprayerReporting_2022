@@ -19,17 +19,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/add_button"
         android:layout_width="132dp"
         android:layout_height="89dp"
         android:layout_marginStart="208dp"
         android:layout_marginTop="200dp"
         android:text="Add"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="openAddUser"/>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/delete_button"
         android:layout_width="133dp"
         android:layout_height="92dp"
         android:layout_marginTop="200dp"
@@ -38,5 +39,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.589"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="openDeleteUser"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
