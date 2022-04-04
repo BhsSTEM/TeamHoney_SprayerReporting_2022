@@ -1,5 +1,7 @@
 package com.example.teamhoney_sprayerreporting_2022;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -10,7 +12,9 @@ import android.widget.EditText;
 
 import java.io.FileOutputStream;
 
-public class AddUser extends AppCompatActivity {
+public class AddUser(DatabaseReference database) extends AppCompatActivity {
+    //private DatabaseReference mDatabase;
+    //mDatabase = FirebaseDatabase.getInstance().getReference();
     String name;
     String email;
     String username;
