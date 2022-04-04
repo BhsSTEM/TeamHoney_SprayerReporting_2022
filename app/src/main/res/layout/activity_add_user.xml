@@ -14,11 +14,10 @@
         android:gravity="center"
         android:padding="10dp"
         android:clickable="true"
-        android:focusableInTouchMode="true"
-        android:onClick="close">
+        android:focusableInTouchMode="true">
 
         <TextView
-            android:id="@+id/editName"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -27,7 +26,7 @@
             android:padding="10dp"/>
 
         <EditText
-            android:id="@+id/editTexName"
+            android:id="@+id/editName"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +39,7 @@
             android:padding="10dp"/>
 
         <EditText
-            android:id="@+id/editTextUsername"
+            android:id="@+id/editUsername"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +52,7 @@
             android:padding="10dp"/>
 
         <EditText
-            android:id="@+id/editTextMain"
+            android:id="@+id/editMail"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +65,7 @@
             android:padding="10dp"/>
 
         <EditText
-            android:id="@+id/editTextPassword"
+            android:id="@+id/editPassword"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
