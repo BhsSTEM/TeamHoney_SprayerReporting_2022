@@ -32,11 +32,11 @@ public class AddUser(DatabaseReference database) extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
         nameInput = (EditText) findViewById(R.id.editName);
-        emailInput = (EditText) findViewById(R.id.editTexEmail);
-        usernameInput = (EditText) findViewById(R.id.editTextUsername);
-        passwordInput = (EditText) findViewById(R.id.editTextPassword);
+        emailInput = (EditText) findViewById(R.id.editMail);
+        usernameInput = (EditText) findViewById(R.id.editUsername);
+        passwordInput = (EditText) findViewById(R.id.editPassword);
 
-        submitButton = (Button) findViewById(R.id.button2);
+        submitButton = (Button) findViewById(R.id.submitButton);
         submitButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
