@@ -18,6 +18,20 @@
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+
+        <entry key="app/src/main/res/layout/activity_add_user.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_admin_permissions_page.xml" value="0.13541666666666666" />
+        <entry key="app/src/main/res/layout/activity_admin_selection.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_delete_user.xml" value="0.2187347412109375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/adduser.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/adminadd.xml" value="0.31301208496093746" />
+        <entry key="app/src/main/res/layout/custom_layout.xml" value="0.151268115942029" />
+        <entry key="app/src/main/res/layout/databse_layout.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

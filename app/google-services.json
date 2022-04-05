@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "417856012135",
+    "project_id": "honeysprayer-9124d",
+    "storage_bucket": "honeysprayer-9124d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417856012135:android:ffbd7f46b623ded5cfb9c2",
+        "android_client_info": {
+          "package_name": "com.example.teamhoney_sprayerreporting_2022"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417856012135-hsci4ar06jfub7mthj3pi0kgrraj8rfk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwzT-LwEe5ff_7O5W53t3EKnEnJpXab78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417856012135-hsci4ar06jfub7mthj3pi0kgrraj8rfk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

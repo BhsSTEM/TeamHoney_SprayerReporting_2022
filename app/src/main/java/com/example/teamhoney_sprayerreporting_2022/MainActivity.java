@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity{
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         usernameView = findViewById(R.id.usernameBox);
         passwordView = findViewById(R.id.passwordBox);
-        button = (Button) findViewById(R.id.signinbutton);
+        button = (Button) findViewById(R.id.signinButton);
         usernames.add("admin");
         passwords.add("password");
     }
