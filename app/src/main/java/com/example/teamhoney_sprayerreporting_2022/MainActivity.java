@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity{
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity{
     private ArrayList<String> passwords = new ArrayList<>();
     private Button button;
 
+    private Database base;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -51,22 +54,12 @@ public class MainActivity extends AppCompatActivity{
         button = (Button) findViewById(R.id.signinButton);
         usernames.add("admin");
         passwords.add("password");
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
 
-        myRef.child("Users").child("User1").child("Username").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                }
-                Log.d("firebase", "tried to read");
-            }
-        });
+        base = new Database();
+
+        base.write(new ArrayList<String>(Arrays.asList(new String[]{"Users","3","Pass"})), "5678");
     }
+
     public void openAdminSelection(){
         Intent intent = new Intent(this, AdminSelection.class);
         startActivity(intent);
@@ -110,7 +103,6 @@ public class MainActivity extends AppCompatActivity{
                 }
             }
         }
-
 
     }
 }
