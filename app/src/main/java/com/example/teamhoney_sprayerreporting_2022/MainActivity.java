@@ -56,8 +56,6 @@ public class MainActivity extends AppCompatActivity{
         passwords.add("password");
 
         base = new Database();
-
-        base.write(new ArrayList<String>(Arrays.asList(new String[]{"Users","3","Pass"})), "5678");
     }
 
     public void openAdminSelection(){
