@@ -23,6 +23,18 @@ stores the info in a DataStorage object
 Also handles writing new data to the database which is automatically loaded back to local storage
  */
 
+/*      Example database usage
+        private Database base;
+
+        base = new Database();
+
+        base.write(new ArrayList<String>(Arrays.asList(new String[]{"Crops", "0"})), "Corn");
+
+        base.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Crops", "0"})));
+
+        base.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Users"})));
+
+ */
 public class Database {
     private FirebaseDatabase database;  //The actual database object
     private DatabaseReference ref;      //allows for navigating the tree and read and write access
