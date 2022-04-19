@@ -42,8 +42,6 @@ public class MainActivity extends AppCompatActivity{
     private ArrayList<String> passwords = new ArrayList<>();
     private Button button;
 
-    private Database base;
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -54,8 +52,6 @@ public class MainActivity extends AppCompatActivity{
         button = (Button) findViewById(R.id.signinButton);
         usernames.add("admin");
         passwords.add("password");
-
-        base = new Database();
     }
 
     public void openAdminSelection(){
