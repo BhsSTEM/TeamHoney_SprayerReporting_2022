@@ -1,7 +1,7 @@
 package com.example.teamhoney_sprayerreporting_2022;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,11 +18,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity{
@@ -34,9 +42,10 @@ public class MainActivity extends AppCompatActivity{
     private ArrayList<String> passwords = new ArrayList<>();
     private Button button;
 
+    private Database base;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -45,7 +54,10 @@ public class MainActivity extends AppCompatActivity{
         button = (Button) findViewById(R.id.signinButton);
         usernames.add("admin");
         passwords.add("password");
+
+        base = new Database();
     }
+
     public void openAdminSelection(){
         Intent intent = new Intent(this, AdminSelection.class);
         startActivity(intent);
@@ -89,7 +101,6 @@ public class MainActivity extends AppCompatActivity{
                 }
             }
         }
-
 
     }
 }
