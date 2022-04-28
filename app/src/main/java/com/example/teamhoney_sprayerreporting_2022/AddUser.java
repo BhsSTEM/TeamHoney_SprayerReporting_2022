@@ -3,6 +3,7 @@ package com.example.teamhoney_sprayerreporting_2022;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -10,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AddUser extends AppCompatActivity {
     //private DatabaseReference mDatabase;
@@ -18,6 +21,9 @@ public class AddUser extends AppCompatActivity {
     String email;
     String username;
     String password;
+    private Database base;
+
+
 
     Button submitButton;
 
@@ -28,6 +34,7 @@ public class AddUser extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        base = new Database();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
         nameInput = (EditText) findViewById(R.id.editName);
@@ -43,27 +50,44 @@ public class AddUser extends AppCompatActivity {
                 email = emailInput.getText().toString();
                 username = usernameInput.getText().toString();
                 password = passwordInput.getText().toString();
+                int x = AddOneToNumberOfusers();
+                System.out.println(String.valueOf(x));
+                base.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Name"})), name);
+                base.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Email"})), email);
+                base.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Username"})), username);
+                base.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Password"})), password);
+
+
             }
+public int AddOneToNumberOfusers(){
+    String stringval = base.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Counter"})));
+    int intval = Integer.parseInt(stringval);
+    intval++;
+
+    base.write(new ArrayList<String>(Arrays.asList(new String[]{"Counter"})), String.valueOf(intval));
+    return intval++;
+}
             public void saveInfo(View view){
                 String File = "Admin_info.csv";
+//                new ArrayList<String>(Arrays.asList(new String[]{"Crops", "0"}));
+//                base.write(new ArrayList<String>(Arrays.asList(new String[]{"Crops", "0"})), "sgsgs");
+
                 name = nameInput.getText().toString();
                 email = emailInput.getText().toString();
                 username = usernameInput.getText().toString();
                 password = passwordInput.getText().toString();
                 try{
-                    FileOutputStream out = openFileOutput(File, Context.MODE_APPEND);
-                    out.write(name.getBytes());
-                    out.write(email.getBytes());
-                    out.write(username.getBytes());
-                    out.write(password.getBytes());;
-                    out.close();
+                    base = new Database();
+                    base.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", "0", "Name"})), name);
                 }
                 catch(Exception e) {
                 e.printStackTrace();
                 }
+
+
+
             }
         });
-
 
 
         }

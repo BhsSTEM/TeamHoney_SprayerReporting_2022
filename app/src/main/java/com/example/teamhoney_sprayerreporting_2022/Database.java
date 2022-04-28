@@ -25,13 +25,9 @@ Also handles writing new data to the database which is automatically loaded back
 
 /*      Example database usage
         private Database base;
-
         base = new Database();
-
         base.write(new ArrayList<String>(Arrays.asList(new String[]{"Crops", "0"})), "Corn");
-
         base.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Crops", "0"})));
-
         base.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Users"})));
 
  */
