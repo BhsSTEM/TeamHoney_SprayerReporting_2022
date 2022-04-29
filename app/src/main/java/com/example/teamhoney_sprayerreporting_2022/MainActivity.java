@@ -43,11 +43,15 @@ public class MainActivity extends AppCompatActivity{
     private Button button;
     public static Database dataBase;
 
+    public static Database dataBase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        dataBase = new Database();
         usernameView = findViewById(R.id.usernameBox);
         passwordView = findViewById(R.id.passwordBox);
         button = (Button) findViewById(R.id.signinButton);

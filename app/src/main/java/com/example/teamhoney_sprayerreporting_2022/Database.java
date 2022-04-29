@@ -29,7 +29,6 @@ Also handles writing new data to the database which is automatically loaded back
         base.write(new ArrayList<String>(Arrays.asList(new String[]{"Crops", "0"})), "Corn");
         base.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Crops", "0"})));
         base.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Users"})));
-
  */
 public class Database {
     private FirebaseDatabase database;  //The actual database object
@@ -41,7 +40,7 @@ public class Database {
         database = FirebaseDatabase.getInstance();      //create a database object and reference to the root
         ref = database.getReference();
         data = new DataStorage();                    //create a dataStorage object
-        updated = true;
+        updated = false;
 
         ValueEventListener postListener = new ValueEventListener() {    //create a listener to detect changes to the realtime database
             @Override
@@ -50,6 +49,7 @@ public class Database {
                 updateStorage(dataSnapshot);                            //read data from the dataSnapshot given by the listener
                 updated = true;                                         //updateStorage cycles through every path and writes the data to storage
                 data.printData();
+
             }
 
             @Override
@@ -66,7 +66,7 @@ public class Database {
             data.addValue(path, dataSnapshot.getValue().toString());  //write the path and value into data
         }
         else {                                                          //if there is at least one child path
-            for (DataSnapshot child : dataSnapshot.getChildren()) {     //for each path, recall updateStorage
+            for (DataSnapshot child : dataSnapshot.getChildren()) {     //for each path, call updateStorage
                 updateStorage(child);
             }
         }
