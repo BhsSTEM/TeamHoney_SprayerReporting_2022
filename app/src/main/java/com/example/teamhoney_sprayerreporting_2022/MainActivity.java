@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity{
     private ArrayList<String> usernames = new ArrayList<>();
     private ArrayList<String> passwords = new ArrayList<>();
     private Button button;
+    public static Database dataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity{
         button = (Button) findViewById(R.id.signinButton);
         usernames.add("admin");
         passwords.add("password");
+        dataBase = new Database();
     }
 
     public void openAdminSelection(){

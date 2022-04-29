@@ -21,7 +21,7 @@ public class AddUser extends AppCompatActivity {
     String email;
     String username;
     String password;
-    private Database base;
+    //private Database base;
 
 
 
@@ -34,7 +34,6 @@ public class AddUser extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        base = new Database();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
         nameInput = (EditText) findViewById(R.id.editName);
@@ -52,19 +51,19 @@ public class AddUser extends AppCompatActivity {
                 password = passwordInput.getText().toString();
                 int x = AddOneToNumberOfusers();
                 System.out.println(String.valueOf(x));
-                base.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Name"})), name);
-                base.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Email"})), email);
-                base.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Username"})), username);
-                base.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Password"})), password);
+                MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Name"})), name);
+                MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Email"})), email);
+                MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Username"})), username);
+                MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Password"})), password);
 
 
             }
 public int AddOneToNumberOfusers(){
-    String stringval = base.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Counter"})));
+    String stringval = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Counter"})));
     int intval = Integer.parseInt(stringval);
     intval++;
 
-    base.write(new ArrayList<String>(Arrays.asList(new String[]{"Counter"})), String.valueOf(intval));
+    MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Counter"})), String.valueOf(intval));
     return intval++;
 }
             public void saveInfo(View view){
@@ -77,8 +76,8 @@ public int AddOneToNumberOfusers(){
                 username = usernameInput.getText().toString();
                 password = passwordInput.getText().toString();
                 try{
-                    base = new Database();
-                    base.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", "0", "Name"})), name);
+                    //base = new Database();
+                    MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", "0", "Name"})), name);
                 }
                 catch(Exception e) {
                 e.printStackTrace();
