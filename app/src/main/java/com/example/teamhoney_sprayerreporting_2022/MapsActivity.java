@@ -134,11 +134,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return coordCount;
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        Map = googleMap;
+        @Override
+        public void onMapReady(GoogleMap googleMap) {
+            Map = googleMap;
 
-        // Add a marker in Sydney and move the camera
+            Map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+
+                @Override
+                public void onMapClick(@NonNull LatLng latLng) {
+                    Log.d("j", latLng.toString());
+                    //addField(latLng., "taco");
+                }
+            });
+
+
+            // Add a marker in Sydney and move the camera
         LatLng QC = new LatLng(41.53, -90.51);
         Map.addMarker(new MarkerOptions().position(QC).title("Marker in QC"));
         Map.moveCamera(CameraUpdateFactory.newLatLng(QC));

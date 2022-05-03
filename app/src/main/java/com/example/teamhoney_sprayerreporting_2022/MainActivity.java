@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity{
     private Button button;
     public static Database dataBase;
 
-    public static Database dataBase;
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
