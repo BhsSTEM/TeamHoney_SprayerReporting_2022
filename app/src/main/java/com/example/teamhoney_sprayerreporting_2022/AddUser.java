@@ -101,4 +101,8 @@ public int AddOneToNumberOfusers(){
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
+
+    public void goBack(View view) {
+        super.finish();
+    }
 }

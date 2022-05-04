@@ -32,4 +32,8 @@ public class AdminSelection extends AppCompatActivity {
         Intent intent = new Intent(this, DeleteUser.class);
         startActivity(intent);
     }
+
+    public void signOut(View view) {
+        super.finish();
+    }
 }

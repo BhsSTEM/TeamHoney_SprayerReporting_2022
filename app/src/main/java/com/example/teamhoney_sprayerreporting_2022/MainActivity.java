@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity{
     private Button button;
     public static Database dataBase;
 
-    public static Database dataBase;
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -91,6 +89,8 @@ public class MainActivity extends AppCompatActivity{
                     if(passwordView.getEditText().getText().toString().equals(passwords.get(i))){
                         Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_LONG).show();
                         if(usernames.get(i).equals("admin")){
+                            usernameView.getEditText().setText("");
+                            passwordView.getEditText().setText("");
                             openAdminSelection();
                         }
                     }
