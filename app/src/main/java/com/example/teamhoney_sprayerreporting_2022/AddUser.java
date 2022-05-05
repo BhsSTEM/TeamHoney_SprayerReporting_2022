@@ -51,14 +51,6 @@ public class AddUser extends AppCompatActivity {
                 }
             }
         });
-
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AddUser.this, AdminSelection.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public int findAvailableUserSlot() {
@@ -82,5 +74,9 @@ public class AddUser extends AppCompatActivity {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    public void goBack(View view) {
+        super.finish();
     }
 }

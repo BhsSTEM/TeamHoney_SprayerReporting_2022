@@ -28,7 +28,8 @@
             android:layout_height="wrap_content"
             android:text="Back"
             android:textSize="20sp"
-            android:backgroundTint="#FFEB3B" />
+            android:backgroundTint="#FFEB3B"
+            android:onClick="goBack"/>
 
         <TextView
             android:id="@+id/title"
