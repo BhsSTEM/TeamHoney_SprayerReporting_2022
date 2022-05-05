@@ -210,14 +210,14 @@ public class SprayEntries extends AppCompatActivity {
 
         SprayEntry entryVals = entries.get(entryId).getEntryVals();
 
-        dateText.setText(entryVals.date);
+        dateText.setText("Date: " + entryVals.date);
         userText.setText("Entered by: " + entryVals.user);
-        chemText.setText(entryVals.chemical);
+        chemText.setText("Chemical: " + entryVals.chemical);
         actInText.setText(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Chemicals", entries.get(entryId).chemical, "ActIn"}))));
         EPAText.setText(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Chemicals", entries.get(entryId).chemical, "EPA"}))));
-        fieldText.setText(entryVals.field);
-        appMethodText.setText(entryVals.appMethod);
-        weatherText.setText(entryVals.weather);
+        fieldText.setText("Field: " + entryVals.field);
+        appMethodText.setText("Method: " + entryVals.appMethod);
+        weatherText.setText("Weather: " + entryVals.weather);
     }
 
     public void addEntry(PopupWindow popupWindow) {
@@ -288,5 +288,9 @@ public class SprayEntries extends AppCompatActivity {
             MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i), "Weather"})), MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i + 1), "Weather"}))));
         }
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entries.size() - 1)})), null);
+    }
+
+    public void goBack(View view) {
+        super.finish();
     }
 }

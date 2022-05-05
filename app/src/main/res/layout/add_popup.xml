@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="@color/white"
     android:gravity="center"
-    android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
-
-
+    android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="30dp"
         android:text="Add a new spray entry"
         android:textColor="@color/black"
         android:textSize="30sp" />
@@ -21,8 +15,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="30dp"
+        android:layout_marginTop="30dp"
         android:text="Select a field"
         android:textColor="@color/black"
         android:textSize="24sp" />
@@ -37,8 +30,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="30dp"
+        android:layout_marginTop="30dp"
         android:text="Select an application method"
         android:textColor="@color/black"
         android:textSize="24sp" />
@@ -53,8 +45,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="30dp"
+        android:layout_marginTop="30dp"
         android:text="Select a chemical"
         android:textColor="@color/black"
         android:textSize="24sp" />
@@ -69,8 +60,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="30dp"
+        android:layout_marginTop="30dp"
         android:text="Select the weather conditions"
         android:textColor="@color/black"
         android:textSize="24sp" />
@@ -87,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="Add entry"
-        android:background="@android:color/white"
-        android:textColor="@android:color/white"/>
+        android:backgroundTint="@color/yellow"
+        android:textColor="@color/black"/>
 
 </LinearLayout>
