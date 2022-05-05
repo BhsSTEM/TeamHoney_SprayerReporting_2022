@@ -97,6 +97,8 @@ public class MainActivity extends AppCompatActivity{
         for(i = 0; i < emails.size(); i++) {
             if(emails.get(i).equals(emailText.getText().toString()) && passwords.get(i).equals(passwordText.getText().toString())) {
                 currUserId = Integer.parseInt(userIds.get(i));
+                emailText.setText("");
+                passwordText.setText("");
                 if(admins.get(i).equals("true")) {
                     Intent intent = new Intent(this, AdminSelection.class);
                     startActivity(intent);
@@ -104,7 +106,6 @@ public class MainActivity extends AppCompatActivity{
                     Intent intent = new Intent(this, SprayEntries.class);
                     startActivity(intent);
                 }
-                i = emails.size() + 1;
             }
         }
         if(i == emails.size()) {
