@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity{
         dataBase = new Database();
         usernameView = findViewById(R.id.usernameBox);
         passwordView = findViewById(R.id.passwordBox);
-        Button signInBtn = (Button) findViewById(R.id.signInButton);
+        Button signInBtn = (Button) findViewById(R.id.signinButton);
         currUserId = -1;
 
         signInBtn.setOnClickListener(new View.OnClickListener() {
