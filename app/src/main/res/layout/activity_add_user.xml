@@ -21,6 +21,15 @@
         android:focusableInTouchMode="true"
         android:onClick="close">
 
+        <Button
+            android:id="@+id/addUserToAdminButton"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:textSize="20sp"
+            android:backgroundTint="#FFEB3B" />
+
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -37,19 +46,6 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Name"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:background="@color/white"
-            android:textSize="20sp"
-            android:padding="10dp"/>
-
-        <EditText
-            android:id="@+id/editUsername"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Username"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:background="@color/white"
@@ -81,35 +77,41 @@
             android:background="@color/white"
             android:textSize="20sp"
             android:padding="10dp" />
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <EditText
+            android:id="@+id/editAddress"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Address"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:background="@color/white"
+            android:textSize="20sp"
+            android:padding="10dp"/>
+
+        <Switch
+            android:id="@+id/adminSwitch"
+            android:layout_width="146dp"
+            android:layout_height="45dp"
             android:gravity="center"
-            android:orientation="horizontal">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:id="@+id/goBackButton"
-                android:text="Go Back"
-                android:textSize="20sp"
-                android:backgroundTint="#FFEB3B"
-                android:layout_gravity="center"
-                android:onClick="goBack"/>
-            <Button
-                android:id="@+id/submitButton"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="40dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Submit"
-                android:textSize="20sp"
-                android:backgroundTint="#FFEB3B" />
-        </LinearLayout>
+            android:shadowColor="#FFEB3B"
+            android:text="Admin"
+            android:textColor="#FFEB3B"
+            android:textColorHint="#FFEB3B"
+            android:textSize="25sp">
 
+        </Switch>
 
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:textSize="20sp"
+            android:backgroundTint="#FFEB3B" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

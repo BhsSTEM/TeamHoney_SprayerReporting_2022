@@ -13,83 +13,63 @@ import android.widget.EditText;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import android.content.Intent;
+import android.widget.Switch;
 
 public class AddUser extends AppCompatActivity {
     //private DatabaseReference mDatabase;
     //mDatabase = FirebaseDatabase.getInstance().getReference();
-    String name;
-    String email;
-    String username;
-    String password;
     //private Database base;
-
-
-
-    Button submitButton;
-
-    EditText nameInput;
-    EditText emailInput;
-    EditText usernameInput;
-    EditText passwordInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
-        nameInput = (EditText) findViewById(R.id.editName);
-        emailInput = (EditText) findViewById(R.id.editMail);
-        usernameInput = (EditText) findViewById(R.id.editUsername);
-        passwordInput = (EditText) findViewById(R.id.editPassword);
+        Button submitBtn = (Button) findViewById(R.id.submitButton);
+        Button backBtn = (Button) findViewById(R.id.addUserToAdminButton);
 
-        submitButton = (Button) findViewById(R.id.submitButton);
-        submitButton.setOnClickListener(new View.OnClickListener(){
+        submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                name = nameInput.getText().toString();
-                email = emailInput.getText().toString();
-                username = usernameInput.getText().toString();
-                password = passwordInput.getText().toString();
-                int x = AddOneToNumberOfusers();
-                System.out.println(String.valueOf(x));
-                MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Name"})), name);
-                MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Email"})), email);
-                MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Username"})), username);
-                MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", String.valueOf(x), "Password"})), password);
 
+                EditText nameInput = (EditText) findViewById(R.id.editName);
+                EditText emailInput = (EditText) findViewById(R.id.editMail);
+                EditText addressInput = (EditText) findViewById(R.id.editAddress);
+                EditText passwordInput = (EditText) findViewById(R.id.editPassword);
+                Switch adminSwitch = findViewById(R.id.adminSwitch);
 
-            }
-public int AddOneToNumberOfusers(){
-    String stringval = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Counter"})));
-    int intval = Integer.parseInt(stringval);
-    intval++;
+                int slot = findAvailableUserSlot();
 
-    MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Counter"})), String.valueOf(intval));
-    return intval++;
-}
-            public void saveInfo(View view){
-                String File = "Admin_info.csv";
-//                new ArrayList<String>(Arrays.asList(new String[]{"Crops", "0"}));
-//                base.write(new ArrayList<String>(Arrays.asList(new String[]{"Crops", "0"})), "sgsgs");
-
-                name = nameInput.getText().toString();
-                email = emailInput.getText().toString();
-                username = usernameInput.getText().toString();
-                password = passwordInput.getText().toString();
-                try{
-                    //base = new Database();
-                    MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", "0", "Name"})), name);
+                if(!nameInput.getText().toString().equals("") && !emailInput.getText().toString().equals("") && !addressInput.getText().toString().equals("") && !passwordInput.getText().toString().equals("")) {
+                    MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(slot), "Name"})), nameInput.getText().toString());
+                    MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(slot), "Email"})), emailInput.getText().toString());
+                    MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(slot), "Username"})), addressInput.getText().toString());
+                    MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(slot), "Password"})), passwordInput.getText().toString());
+                    MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(slot), "Admin"})), Boolean.toString(adminSwitch.isChecked()));
                 }
-                catch(Exception e) {
-                e.printStackTrace();
-                }
-
-
-
             }
         });
 
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddUser.this, AdminSelection.class);
+                startActivity(intent);
+            }
+        });
+    }
 
+    public int findAvailableUserSlot() {
+        ArrayList<String> fieldIds = MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Users"})));
+        int slot = Integer.parseInt(fieldIds.get(fieldIds.size() - 1)) + 1;
+        for(int i = 0; i < fieldIds.size() + 1; i++) {
+            if(fieldIds != null && !fieldIds.contains(Integer.toString(i))) {
+                slot = i;
+                i = fieldIds.size();
+            }
         }
+        return slot;
+    }
 
     public void close(View view){
         closeKeyboard();
@@ -100,9 +80,5 @@ public int AddOneToNumberOfusers(){
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
-    }
-
-    public void goBack(View view) {
-        super.finish();
     }
 }
