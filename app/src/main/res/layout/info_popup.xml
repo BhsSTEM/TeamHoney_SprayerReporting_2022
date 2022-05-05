@@ -5,31 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
     <TextView
         android:id="@+id/dateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:text="01/01/22"
+        android:text="Date"
         android:textColor="#000000"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/userText"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:text="Entered by: User"
+        android:gravity="center"
         android:textColor="#000000"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateText" />
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/chemText"
@@ -37,9 +36,7 @@
         android:layout_height="wrap_content"
         android:text="Chemical"
         android:textColor="#000000"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        android:textSize="30sp"/>
 
     <TextView
         android:id="@+id/actInText"
@@ -47,10 +44,7 @@
         android:layout_height="wrap_content"
         android:text="Act In"
         android:textColor="#000000"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="@+id/chemText"
-        app:layout_constraintStart_toStartOf="@+id/chemText"
-        app:layout_constraintTop_toBottomOf="@+id/chemText" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/EPAText"
@@ -59,21 +53,17 @@
         android:text="EPA"
         android:textColor="#000000"
         android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="@+id/actInText"
-        app:layout_constraintStart_toStartOf="@+id/actInText"
-        app:layout_constraintTop_toBottomOf="@+id/actInText" />
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/appMethodText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Airplane"
+        android:text="Method"
         android:textAllCaps="false"
         android:textColor="#000000"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/EPAText"
-        app:layout_constraintEnd_toEndOf="@+id/fieldText"
-        app:layout_constraintStart_toStartOf="@+id/fieldText" />
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/fieldText"
@@ -82,8 +72,7 @@
         android:text="Field"
         android:textColor="#000000"
         android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="@+id/chemText" />
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/weatherText"
@@ -91,11 +80,7 @@
         android:layout_height="wrap_content"
         android:text="Weather"
         android:textColor="#000000"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/chemText"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/chemText"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        android:textSize="30sp"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -108,39 +93,33 @@
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="261dp" />
+        android:orientation="vertical"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="90dp" />
+        android:orientation="horizontal"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="151dp" />
+        android:orientation="horizontal"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="274dp" />
+        android:orientation="horizontal"/>
 
-    <Button
-        android:id="@+id/deleteBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        android:textColor="#FFEB3B"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/yellow"
+            android:text="Delete"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
