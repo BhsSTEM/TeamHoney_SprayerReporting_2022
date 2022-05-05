@@ -289,4 +289,8 @@ public class SprayEntries extends AppCompatActivity {
         }
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entries.size() - 1)})), null);
     }
+
+    public void goBack(View view) {
+        super.finish();
+    }
 }

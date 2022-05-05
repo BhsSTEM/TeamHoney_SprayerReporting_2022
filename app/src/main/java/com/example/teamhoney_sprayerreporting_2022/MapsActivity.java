@@ -101,13 +101,6 @@ public class MapsActivity extends FragmentActivity implements
                 }
             }
         });
-
-        mapBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(entriesIntent);
-            }
-        });
     }
 
     @Override
@@ -237,5 +230,9 @@ public class MapsActivity extends FragmentActivity implements
                 i = fieldIds.size();
             }
         }
+    }
+
+    public void goBack(View view) {
+        super.finish();
     }
 }

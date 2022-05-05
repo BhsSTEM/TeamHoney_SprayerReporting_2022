@@ -36,4 +36,9 @@ public class AdminSelection extends AppCompatActivity {
     public void signOut(View view) {
         super.finish();
     }
+
+    public void openEntry(View view) {
+        Intent intent = new Intent(this, SprayEntries.class);
+        startActivity(intent);
+    }
 }
