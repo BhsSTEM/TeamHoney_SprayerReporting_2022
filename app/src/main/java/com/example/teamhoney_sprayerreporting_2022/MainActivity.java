@@ -94,8 +94,10 @@ public class MainActivity extends AppCompatActivity{
         EditText emailText = findViewById(R.id.emailText);
         EditText passwordText = findViewById(R.id.passwordText);
         int i;
+        boolean found = false;
         for(i = 0; i < emails.size(); i++) {
             if(emails.get(i).equals(emailText.getText().toString()) && passwords.get(i).equals(passwordText.getText().toString())) {
+                found = true;
                 currUserId = Integer.parseInt(userIds.get(i));
                 emailText.setText("");
                 passwordText.setText("");
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity{
                 }
             }
         }
-        if(i == emails.size()) {
+        if(!found) {
             Toast.makeText(MainActivity.this, "Email or password is incorrect", Toast.LENGTH_LONG).show();
         }
     }
