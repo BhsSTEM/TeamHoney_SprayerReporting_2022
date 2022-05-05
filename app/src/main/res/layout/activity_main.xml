@@ -79,11 +79,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id= "@+id/signInButton"
+            android:id= "@+id/signinButton"
             android:layout_width="250dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            android:backgroundTint="#FFEB3B"
+            android:backgroundTint="@color/yellow"
             android:text="@string/sign_in"
             android:textAllCaps="false"
             android:textColor="@color/black"

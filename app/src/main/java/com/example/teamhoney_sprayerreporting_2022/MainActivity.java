@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,8 +40,8 @@ public class MainActivity extends AppCompatActivity{
     private String password = "";
     private ArrayList<String> usernames = new ArrayList<>();
     private ArrayList<String> passwords = new ArrayList<>();
+    private Button button;
     public static Database dataBase;
-    public static int currUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
