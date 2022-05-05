@@ -62,13 +62,9 @@ public class MainActivity extends AppCompatActivity{
                 signIn(view);
             }
         });
-        //Intent intent = new Intent(this, SprayEntries.class);
-        //startActivity(intent);
-    }
 
-    public void openAdminSelection(){
-        Intent intent = new Intent(this, AdminSelection.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, AdminSelection.class);
+        //startActivity(intent);
     }
 
     public void close(View view){
@@ -85,25 +81,21 @@ public class MainActivity extends AppCompatActivity{
     public void signIn(View view) {
         ArrayList<String> userIds = MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Users"})));
         Log.d("userId", userIds.get(0));
-        ArrayList<String> usernames = new ArrayList<String>();
+        ArrayList<String> emails = new ArrayList<String>();
         ArrayList<String> passwords = new ArrayList<String>();
         ArrayList<String> admins = new ArrayList<String>();
 
         for(int i = 0; i < userIds.size(); i++) {
-            usernames.add(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIds.get(i), "Username"}))));
+            emails.add(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIds.get(i), "Email"}))));
             passwords.add(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIds.get(i), "Password"}))));
             admins.add(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIds.get(i), "Admin"}))));
         }
 
-        EditText usernameText = findViewById(R.id.usernameText);
-        EditText passwordText = findViewById(R.id.usernameText);
-
-        for(int i = 0; i < usernames.size(); i++) {
-            Log.d("user1", usernames.get(0));
-            Log.d("pass1", passwords.get(0));
-            Log.d("user1", usernameText.getText().toString());
-            Log.d("pass1", passwordText.getText().toString());
-            if(usernames.get(i).equals(usernameText.getText().toString()) && passwords.get(i).equals(passwordText.getText().toString())) {
+        EditText emailText = findViewById(R.id.emailText);
+        EditText passwordText = findViewById(R.id.passwordText);
+        int i;
+        for(i = 0; i < emails.size(); i++) {
+            if(emails.get(i).equals(emailText.getText().toString()) && passwords.get(i).equals(passwordText.getText().toString())) {
                 currUserId = Integer.parseInt(userIds.get(i));
                 if(admins.get(i).equals("true")) {
                     Intent intent = new Intent(this, AdminSelection.class);
@@ -111,10 +103,12 @@ public class MainActivity extends AppCompatActivity{
                 } else {
                     Intent intent = new Intent(this, SprayEntries.class);
                     startActivity(intent);
-
                 }
+                i = emails.size() + 1;
             }
         }
-        Toast.makeText(MainActivity.this, "Username or password is incorrect", Toast.LENGTH_LONG).show();
+        if(i == emails.size()) {
+            Toast.makeText(MainActivity.this, "Email or password is incorrect", Toast.LENGTH_LONG).show();
+        }
     }
 }

@@ -233,7 +233,7 @@ public class SprayEntries extends AppCompatActivity {
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "Chemical"})), Integer.toString(chemSpinner.getSelectedItemPosition()));
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "Weather"})), Integer.toString(weatherSpinner.getSelectedItemPosition()));
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "Date"})), currentDate);
-        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "User"})), "1");
+        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "User"})), Integer.toString(MainActivity.currUserId));
     }
 
     public int getAvailableEntryId() {
