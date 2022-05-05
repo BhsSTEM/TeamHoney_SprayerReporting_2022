@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity{
     private ArrayList<String> passwords = new ArrayList<>();
     private Button button;
     public static Database dataBase;
+    public static int currUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
