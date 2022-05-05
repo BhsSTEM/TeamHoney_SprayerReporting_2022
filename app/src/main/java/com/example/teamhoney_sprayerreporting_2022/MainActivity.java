@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity{
     private ArrayList<String> passwords = new ArrayList<>();
     private Button button;
     public static Database dataBase;
+    public static int currUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity{
         dataBase = new Database();
         usernameView = findViewById(R.id.usernameBox);
         passwordView = findViewById(R.id.passwordBox);
-        Button signInBtn = (Button) findViewById(R.id.signInButton);
+        Button signInBtn = (Button) findViewById(R.id.signinButton);
         currUserId = -1;
 
         signInBtn.setOnClickListener(new View.OnClickListener() {
