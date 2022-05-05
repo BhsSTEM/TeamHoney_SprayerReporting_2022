@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,8 +41,8 @@ public class MainActivity extends AppCompatActivity{
     private String password = "";
     private ArrayList<String> usernames = new ArrayList<>();
     private ArrayList<String> passwords = new ArrayList<>();
-    private Button button;
     public static Database dataBase;
+    public static int currUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -52,10 +53,17 @@ public class MainActivity extends AppCompatActivity{
         dataBase = new Database();
         usernameView = findViewById(R.id.usernameBox);
         passwordView = findViewById(R.id.passwordBox);
-        button = (Button) findViewById(R.id.signinButton);
-        usernames.add("admin");
-        passwords.add("password");
-        dataBase = new Database();
+        Button signInBtn = (Button) findViewById(R.id.signInButton);
+        currUserId = -1;
+
+        signInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signIn(view);
+            }
+        });
+        //Intent intent = new Intent(this, SprayEntries.class);
+        //startActivity(intent);
     }
 
     public void openAdminSelection(){
@@ -75,34 +83,38 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void signIn(View view) {
-        //noinspection ConstantConditions
-        username = usernameView.getEditText().getText().toString();
-        //noinspection ConstantConditions
-        password = passwordView.getEditText().getText().toString();
-        //Code to check username and password
-        if(TextUtils.isEmpty(usernameView.getEditText().getText().toString()) || TextUtils.isEmpty(passwordView.getEditText().getText().toString())){
-            Toast.makeText(MainActivity.this, "Please enter username and password", Toast.LENGTH_LONG).show();
+        ArrayList<String> userIds = MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Users"})));
+        Log.d("userId", userIds.get(0));
+        ArrayList<String> usernames = new ArrayList<String>();
+        ArrayList<String> passwords = new ArrayList<String>();
+        ArrayList<String> admins = new ArrayList<String>();
+
+        for(int i = 0; i < userIds.size(); i++) {
+            usernames.add(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIds.get(i), "Username"}))));
+            passwords.add(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIds.get(i), "Password"}))));
+            admins.add(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIds.get(i), "Admin"}))));
         }
-        else{
-            for(int i = 0;i<usernames.size();i++){
-                if(usernameView.getEditText().getText().toString().equals(usernames.get(i))){
-                    if(passwordView.getEditText().getText().toString().equals(passwords.get(i))){
-                        Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_LONG).show();
-                        if(usernames.get(i).equals("admin")){
-                            usernameView.getEditText().setText("");
-                            passwordView.getEditText().setText("");
-                            openAdminSelection();
-                        }
-                    }
-                    else{
-                        Toast.makeText(MainActivity.this, "Invalid username or password", Toast.LENGTH_LONG).show();
-                    }
-                }
-                else{
-                    Toast.makeText(MainActivity.this, "Invalid username or password", Toast.LENGTH_LONG).show();
+
+        EditText usernameText = findViewById(R.id.usernameText);
+        EditText passwordText = findViewById(R.id.usernameText);
+
+        for(int i = 0; i < usernames.size(); i++) {
+            Log.d("user1", usernames.get(0));
+            Log.d("pass1", passwords.get(0));
+            Log.d("user1", usernameText.getText().toString());
+            Log.d("pass1", passwordText.getText().toString());
+            if(usernames.get(i).equals(usernameText.getText().toString()) && passwords.get(i).equals(passwordText.getText().toString())) {
+                currUserId = Integer.parseInt(userIds.get(i));
+                if(admins.get(i).equals("true")) {
+                    Intent intent = new Intent(this, AdminSelection.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(this, SprayEntries.class);
+                    startActivity(intent);
+
                 }
             }
         }
-
+        Toast.makeText(MainActivity.this, "Username or password is incorrect", Toast.LENGTH_LONG).show();
     }
 }

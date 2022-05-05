@@ -10,6 +10,10 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,8 +31,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
-        GoogleMap.OnPolylineClickListener,
+public class MapsActivity extends FragmentActivity implements
+        OnMapReadyCallback,
         GoogleMap.OnPolygonClickListener
 {
 
@@ -38,6 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap Map;
     private ActivityMapsBinding binding;
+    private int availableFieldId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,56 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         mode = 0;
+
+        Intent entriesIntent = new Intent(this, SprayEntries.class);
+
+        Button addFieldBtn = findViewById(R.id.addFieldBtn);
+        Button deleteFieldBtn = findViewById(R.id.deleteFieldBtn);
+        Button mapBackButton = findViewById(R.id.mapToEntriesBtn);
+
+        addFieldBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Button addFieldBtn = findViewById(R.id.addFieldBtn);
+                EditText mapEditText = findViewById(R.id.mapEditText);
+                if(mode != 0) {
+                    mode = 0;
+                    addFieldBtn.setText("Add field");
+                    deleteFieldBtn.setText("Delete field");
+                    MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Fields", Integer.toString(availableFieldId), "Name"})), mapEditText.getText().toString());
+                    findAvailableFieldId();
+                } else {
+                    mode = 1;
+                    addFieldBtn.setText("Save field");
+                    deleteFieldBtn.setText("Delete field");
+                    findAvailableFieldId();
+                }
+            }
+        });
+
+        deleteFieldBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Button addFieldBtn = findViewById(R.id.addFieldBtn);
+                EditText mapEditText = findViewById(R.id.mapEditText);
+                if(mode != 0) {
+                    mode = 0;
+                    addFieldBtn.setText("Add field");
+                    deleteFieldBtn.setText("Delete field");
+                } else {
+                    mode = 2;
+                    addFieldBtn.setText("Add Field");
+                    deleteFieldBtn.setText("Exit delete mode");
+                }
+            }
+        });
+
+        mapBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(entriesIntent);
+            }
+        });
     }
 
     @Override
@@ -66,7 +121,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         public void run() {
             try {
                 Map.clear();
-                UpdatePolygons();
+                updatePolygons();
             }
             finally {
                 handler.postDelayed(StatusChecker, interval);
@@ -99,26 +154,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return polygon;
     }
 
-    private ArrayList<Polygon> UpdatePolygons() {
+    private ArrayList<Polygon> updatePolygons() {
         ArrayList<Polygon> polygons = new ArrayList<Polygon>();
 
-        ArrayList<String> fieldTags = MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Fields"})));
-        for(int i = 0; i < fieldTags.size(); i++) {
-            ArrayList<String> fieldDataKeys = MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Fields", fieldTags.get(i)})));
+        ArrayList<String> fieldIds = MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Fields"})));
+        for(int i = 0; i < fieldIds.size(); i++) {
+            ArrayList<String> fieldDataKeys = MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Fields", fieldIds.get(i)})));
             ArrayList<Double> fieldCoords = new ArrayList<Double>();
             for(int j = 0; j < fieldDataKeys.size(); j++) {
-                if(fieldDataKeys.get(j).substring(0, 5).equals("coord")) {
-                    fieldCoords.add(Double.parseDouble(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Fields", fieldTags.get(i), fieldDataKeys.get(j)})))));
+                if(fieldDataKeys.get(j).length() >= 5 && fieldDataKeys.get(j).substring(0, 5).equals("coord")) {
+                    fieldCoords.add(Double.parseDouble(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Fields", fieldIds.get(i), fieldDataKeys.get(j)})))));
                 }
             }
-            polygons.add(addPolygon(fieldCoords, Boolean.parseBoolean(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Fields", fieldTags.get(i), "clickable"})))), fieldTags.get(i), Map));
+            if(fieldCoords.size() >= 4) {
+                polygons.add(addPolygon(fieldCoords, Boolean.parseBoolean(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Fields", fieldIds.get(i), "clickable"})))), fieldIds.get(i), Map));
+            }
+            else if(mode == 0) {
+                MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Fields", Integer.toString(i)})), null);
+            }
         }
         return polygons;
     }
 
-    public void addField(MotionEvent event, String tag) {
-        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Fields", tag, "coord" + Integer.toString(getCoordCount(tag))})), Float.toString(event.getX()));
-        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Fields", tag, "coord" + Integer.toString(getCoordCount(tag) + 1)})), Float.toString(event.getY()));
+    public void addField(LatLng point, String id, String name) {
+        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Fields", id, "coord" + Integer.toString(getCoordCount(id) + 10)})), Double.toString(point.latitude));
+        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Fields", id, "coord" + Integer.toString(getCoordCount(id) + 11)})), Double.toString(point.longitude));
+        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Fields", id, "Name"})), name);
     }
 
     public int getCoordCount(String fieldTag) {
@@ -127,7 +188,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         for(int i = 0; i < fieldDataKeys.size(); i++) {
 
-            if(fieldDataKeys.get(i).substring(0, 5).equals("coord")) {
+            if(fieldDataKeys.get(i).length() > 4 && fieldDataKeys.get(i).substring(0, 5).equals("coord")) {
                 coordCount++;
             }
         }
@@ -137,35 +198,44 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         Map = googleMap;
-
         // Add a marker in Sydney and move the camera
-        LatLng QC = new LatLng(41.53, -90.51);
-        Map.addMarker(new MarkerOptions().position(QC).title("Marker in QC"));
+        LatLng QC = new LatLng(41.53, -90.51);;
         Map.moveCamera(CameraUpdateFactory.newLatLng(QC));
         googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         startUpdating();
 
-        //Polygon poly = addPolygon(new ArrayList<Double>(Arrays.asList(new Double[]{10.0, 10.0, 10.0, -10.0, -10.0, -10.0, -10.0, 10.0})), true, "Africa", googleMap);
+        Map.setOnMapClickListener(new GoogleMap.OnMapClickListener(){
+            @Override
+            public void onMapClick(LatLng point) {
+                EditText addFieldText = findViewById(R.id.mapEditText);
+                if(mode == 1) {
+                    addField(point, Integer.toString(availableFieldId), addFieldText.getText().toString());
+                }
+            }
+        });
     }
 
     @Override
     public void onPolygonClick(@NonNull Polygon polygon) {
-        if (polygon.getTag().equals("Africa")) {
+        if(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Fields", (String) polygon.getTag(), "Name"}))).equals("Africa")) {
             Log.d("Toto", "I bless the rains");
         }
-    }
-
-    @Override
-    public void onPolylineClick(@NonNull Polyline polyline) {
-        if (polyline.getTag().equals("Africa")) {
-            Log.d("place", "AFRICA");
+        if(mode == 0) {
+            EditText editText = findViewById(R.id.mapEditText);
+            editText.setText(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Fields", (String) polygon.getTag(), "Name"}))));
+        }
+        if(mode == 2) {
+            MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Fields", (String) polygon.getTag()})), null);
         }
     }
 
-    /*@Override
-    public boolean onTouch(View view, MotionEvent event) {
-        Log.d("boo", "boo1");
-        addField(event, "taco");
-        return false;
-    }*/
+    public void findAvailableFieldId() {
+        ArrayList<String> fieldIds = MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Fields"})));
+        for(int i = 0; i < fieldIds.size() + 1; i++) {
+            if(fieldIds != null && !fieldIds.contains(Integer.toString(i))) {
+                availableFieldId = i;
+                i = fieldIds.size();
+            }
+        }
+    }
 }

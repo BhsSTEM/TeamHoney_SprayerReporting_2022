@@ -48,8 +48,6 @@ public class Database {
                 data.clearData();                                       //clear out out-of-date data
                 updateStorage(dataSnapshot);                            //read data from the dataSnapshot given by the listener
                 updated = true;                                         //updateStorage cycles through every path and writes the data to storage
-                data.printData();
-
             }
 
             @Override

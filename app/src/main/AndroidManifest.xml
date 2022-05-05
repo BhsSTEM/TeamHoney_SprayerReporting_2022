@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/logo_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamHoney_SprayerReporting_2022">
-
+        <activity
+            android:name=".SprayEntries"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
