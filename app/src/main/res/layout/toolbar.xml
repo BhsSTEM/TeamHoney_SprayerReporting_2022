@@ -9,13 +9,20 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:layout_constraintTop_toTopOf="parent"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/logo"
+        app:tint="@color/black"
+        android:contentDescription="@string/logo" />
     <TextView
         android:id="@+id/toolbar_title"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="HoneySprays"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/title"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
+
 </androidx.appcompat.widget.Toolbar>
