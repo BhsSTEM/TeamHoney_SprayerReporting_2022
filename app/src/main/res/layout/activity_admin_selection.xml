@@ -8,45 +8,52 @@
     tools:context=".AdminSelection"
     android:background="@color/black">
 
-    <TextView
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="Would you like to add or delete a user?"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/add_button"
-        android:layout_width="135dp"
-        android:layout_height="96dp"
-        android:backgroundTint="#FFEB3B"
-        android:onClick="openAddUser"
-        android:text="Add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.806"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+        <TextView
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Would you like to add or delete a user?"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:padding="50dp"/>
 
-    <Button
-        android:id="@+id/delete_button"
-        android:layout_width="133dp"
-        android:layout_height="92dp"
-        android:layout_marginEnd="200dp"
-        android:backgroundTint="#FFEB3B"
-        android:onClick="openDeleteUser"
-        android:text="Delete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/delete_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFEB3B"
+                android:onClick="openDeleteUser"
+                android:text="Delete"
+                android:layout_marginRight="20dp"/>
+            <Button
+                android:id="@+id/add_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFEB3B"
+                android:onClick="openAddUser"
+                android:text="Add"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/signOutButton"
+            android:text="Sign Out"
+            android:backgroundTint="#FFFFFF"
+            android:layout_marginTop="30dp"
+            android:onClick="signOut"
+            />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

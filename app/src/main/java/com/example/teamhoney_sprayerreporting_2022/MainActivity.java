@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity{
                 } else {
                     Intent intent = new Intent(this, SprayEntries.class);
                     startActivity(intent);
+
                 }
             }
         }
