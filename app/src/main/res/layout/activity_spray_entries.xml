@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000">
+
+    <LinearLayout
+        android:id="@+id/LinearLayout02"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/AddBtn"
+            android:layout_width="218dp"
+            android:layout_height="wrap_content"
+            android:background="#0F9D58"
+            android:text="Add entry"
+            android:textColor="#ffff00" />
+
+        <Button
+            android:id="@+id/MapBtn"
+            android:layout_width="195dp"
+            android:layout_height="wrap_content"
+            android:background="#0F9D58"
+            android:text="Go to Map"
+            android:textColor="#ffff00" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/EntryListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/material_blue_grey_800"
+        android:dividerHeight="1dp"
+        android:background="#000000"/>
+
+</LinearLayout>
