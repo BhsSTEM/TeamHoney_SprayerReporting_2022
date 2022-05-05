@@ -15,6 +15,7 @@
         android:orientation="vertical"
         android:background="#000000"
         android:gravity="center"
+        android:padding="10dp"
         android:clickable="true"
         android:focusableInTouchMode="true"
         android:onClick="close">
@@ -40,13 +41,13 @@
             android:gravity="center"
             android:layout_width="250dp"
             android:layout_height="60dp"
-            android:hint="@string/usernameText"
+            android:hint="Email"
             android:id="@+id/usernameBox"
             android:textColorHint="#000000"
             android:background="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/usernameText"
+                android:id="@+id/emailText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
