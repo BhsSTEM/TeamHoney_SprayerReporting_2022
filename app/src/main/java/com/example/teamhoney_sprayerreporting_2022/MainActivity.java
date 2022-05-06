@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity{
         int i;
         boolean found = false;
         for(i = 0; i < emails.size(); i++) {
-            if(emails.get(i).equals(emailText.getText().toString()) && passwords.get(i).equals(passwordText.getText().toString())) {
+            if(emails.get(i).equals(emailText.getText().toString().toLowerCase()) && passwords.get(i).equals(passwordText.getText().toString())) {
                 found = true;
                 currUserId = Integer.parseInt(userIds.get(i));
                 emailText.setText("");

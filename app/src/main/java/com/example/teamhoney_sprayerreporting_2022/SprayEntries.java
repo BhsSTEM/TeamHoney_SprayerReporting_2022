@@ -228,7 +228,7 @@ public class SprayEntries extends AppCompatActivity {
         Spinner chemSpinner = (Spinner) popupWindow.getContentView().findViewById(R.id.chemSpinner);
         Spinner weatherSpinner = (Spinner) popupWindow.getContentView().findViewById(R.id.weatherSpinner);
         int entryId = getAvailableEntryId();
-        String currentDate = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
+        String currentDate = new SimpleDateFormat("MM/dd/yy", Locale.getDefault()).format(new Date());
 
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "Field"})), Integer.toString(fieldSpinner.getSelectedItemPosition()));
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "AppMethod"})), Integer.toString(appMethodSpinner.getSelectedItemPosition()));

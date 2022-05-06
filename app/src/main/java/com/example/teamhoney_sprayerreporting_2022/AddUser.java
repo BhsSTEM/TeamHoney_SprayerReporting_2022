@@ -14,6 +14,8 @@ import android.widget.EditText;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
+
 import android.content.Intent;
 import android.widget.Switch;
 
@@ -44,7 +46,7 @@ public class AddUser extends AppCompatActivity {
 
                 if(!nameInput.getText().toString().equals("") && !emailInput.getText().toString().equals("") && !addressInput.getText().toString().equals("") && !passwordInput.getText().toString().equals("")) {
                     MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(slot), "Name"})), nameInput.getText().toString());
-                    MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(slot), "Email"})), emailInput.getText().toString());
+                    MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(slot), "Email"})), emailInput.getText().toString().toLowerCase());
                     MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(slot), "Address"})), addressInput.getText().toString());
                     MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(slot), "Password"})), passwordInput.getText().toString());
                     MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(slot), "Admin"})), Boolean.toString(adminSwitch.isChecked()));
