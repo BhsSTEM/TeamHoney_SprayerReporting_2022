@@ -63,9 +63,9 @@ public class SprayEntries extends AppCompatActivity {
             }
         });
 
-        Button deleteBtn = (Button) findViewById(R.id.MapBtn);
+        Button mapBtn = (Button) findViewById(R.id.MapBtn);
 
-        deleteBtn.setOnClickListener(new View.OnClickListener() {
+        mapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(mapIntent);
@@ -89,6 +89,11 @@ public class SprayEntries extends AppCompatActivity {
                 });
             }
         });
+
+        if(!MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(MainActivity.currUserId), "Admin"}))).equals("true")) {
+            Button backBtn = findViewById(R.id.goBackButton);
+            backBtn.setText("Sign out");
+        }
     }
 
     @Override

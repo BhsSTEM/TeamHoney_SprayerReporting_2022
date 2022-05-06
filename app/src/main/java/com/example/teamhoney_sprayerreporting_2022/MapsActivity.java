@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -102,6 +103,12 @@ public class MapsActivity extends FragmentActivity implements
                 }
             }
         });
+
+        if(!MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(MainActivity.currUserId), "Admin"}))).equals("true")) {
+            ViewGroup layout = (ViewGroup) addFieldBtn.getParent();
+            layout.removeView(addFieldBtn);
+            layout.removeView(deleteFieldBtn);
+        }
     }
 
     @Override
