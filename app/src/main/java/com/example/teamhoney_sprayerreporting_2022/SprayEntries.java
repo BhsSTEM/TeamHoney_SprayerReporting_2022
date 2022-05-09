@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -139,7 +140,6 @@ public class SprayEntries extends AppCompatActivity {
             entry.date = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", entryIdList.get(i), "Date"})));
             entry.field = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", entryIdList.get(i), "Field"})));
             entry.user = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", entryIdList.get(i), "User"})));
-            entry.weather = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", entryIdList.get(i), "Weather"})));
             entries.add(entry);
         }
         return entries;
@@ -164,7 +164,6 @@ public class SprayEntries extends AppCompatActivity {
         Spinner fieldSpinner = (Spinner) popupWindow.getContentView().findViewById(R.id.fieldSpinner);
         Spinner appMethodSpinner = (Spinner) popupWindow.getContentView().findViewById(R.id.appMethodSpinner);
         Spinner chemSpinner = (Spinner) popupWindow.getContentView().findViewById(R.id.chemSpinner);
-        Spinner weatherSpinner = (Spinner) popupWindow.getContentView().findViewById(R.id.weatherSpinner);
 
         ArrayList<String> itemIds = MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Fields"})));
         ArrayList<String> itemNames = new ArrayList<String>();
@@ -192,15 +191,6 @@ public class SprayEntries extends AppCompatActivity {
         ArrayAdapter<String> chemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, itemNames);
         chemAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         chemSpinner.setAdapter(chemAdapter);
-
-        itemIds = MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Weather"})));
-        itemNames = new ArrayList<String>();
-        for(int i = 0; i < itemIds.size(); i++) {
-            itemNames.add(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Weather", itemIds.get(i)}))));
-        }
-        ArrayAdapter<String> weatherAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, itemNames);
-        weatherAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        weatherSpinner.setAdapter(weatherAdapter);
     }
 
     public void updateInfoPopup(PopupWindow popupWindow, int entryId) {
@@ -211,7 +201,6 @@ public class SprayEntries extends AppCompatActivity {
         TextView EPAText = popupWindow.getContentView().findViewById(R.id.EPAText);
         TextView fieldText = popupWindow.getContentView().findViewById(R.id.fieldText);
         TextView appMethodText = popupWindow.getContentView().findViewById(R.id.appMethodText);
-        TextView weatherText = popupWindow.getContentView().findViewById(R.id.weatherText);
 
         ArrayList<SprayEntry> entries = getEntries();
 
@@ -224,21 +213,27 @@ public class SprayEntries extends AppCompatActivity {
         EPAText.setText(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Chemicals", entries.get(entryId).chemical, "EPA"}))));
         fieldText.setText("Field: " + entryVals.field);
         appMethodText.setText("Method: " + entryVals.appMethod);
-        weatherText.setText("Weather: " + entryVals.weather);
     }
 
     public void addEntry(PopupWindow popupWindow) {
         Spinner fieldSpinner = (Spinner) popupWindow.getContentView().findViewById(R.id.fieldSpinner);
         Spinner appMethodSpinner = (Spinner) popupWindow.getContentView().findViewById(R.id.appMethodSpinner);
         Spinner chemSpinner = (Spinner) popupWindow.getContentView().findViewById(R.id.chemSpinner);
-        Spinner weatherSpinner = (Spinner) popupWindow.getContentView().findViewById(R.id.weatherSpinner);
+        EditText rateText = popupWindow.getContentView().findViewById(R.id.rateText);
+        EditText windText = popupWindow.getContentView().findViewById(R.id.windText);
+        EditText tempText = popupWindow.getContentView().findViewById(R.id.tempText);
+        EditText humidText = popupWindow.getContentView().findViewById(R.id.humidText);
+
         int entryId = getAvailableEntryId();
         String currentDate = new SimpleDateFormat("MM/dd/yy", Locale.getDefault()).format(new Date());
 
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "Field"})), Integer.toString(fieldSpinner.getSelectedItemPosition()));
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "AppMethod"})), Integer.toString(appMethodSpinner.getSelectedItemPosition()));
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "Chemical"})), Integer.toString(chemSpinner.getSelectedItemPosition()));
-        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "Weather"})), Integer.toString(weatherSpinner.getSelectedItemPosition()));
+        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "appDensity"})), rateText.getText().toString());
+        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "windSpeed"})), windText.getText().toString());
+        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "temperature"})), tempText.getText().toString());
+        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "temperature"})), humidText.getText().toString());
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "Date"})), currentDate);
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "User"})), Integer.toString(MainActivity.currUserId));
     }
@@ -292,7 +287,6 @@ public class SprayEntries extends AppCompatActivity {
             MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i), "Date"})), MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i + 1), "Date"}))));
             MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i), "Field"})), MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i + 1), "Field"}))));
             MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i), "User"})), MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i + 1), "User"}))));
-            MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i), "Weather"})), MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i + 1), "Weather"}))));
         }
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entries.size() - 1)})), null);
     }
