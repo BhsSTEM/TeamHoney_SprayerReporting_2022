@@ -74,7 +74,8 @@
             android:id="@+id/rateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter Rate"/>
+            android:hint="Enter Rate"
+            android:textColorHint="@color/black"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,19 +99,22 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wind speed"
+            android:hint="Wind speed"
+            android:textColorHint="@color/black"
             android:id="@+id/windText"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Humidity"
+            android:hint="Humidity"
+            android:textColorHint="@color/black"
             android:id="@+id/humidText"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Temperature"
+            android:hint="Temperature"
+            android:textColorHint="@color/black"
             android:id="@+id/tempText"/>
 
     </LinearLayout>
