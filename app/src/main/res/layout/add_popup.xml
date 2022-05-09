@@ -106,7 +106,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Humidity"
+            android:hint="Humidity %"
             android:textColorHint="@color/black"
             android:id="@+id/humidText"/>
 
