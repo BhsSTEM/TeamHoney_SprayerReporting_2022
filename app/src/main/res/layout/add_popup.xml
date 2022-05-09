@@ -99,7 +99,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Wind speed"
+            android:hint="Wind speed MPH"
             android:textColorHint="@color/black"
             android:id="@+id/windText"/>
 
@@ -113,7 +113,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Temperature"
+            android:hint="Temperature °F"
             android:textColorHint="@color/black"
             android:id="@+id/tempText"/>
 
