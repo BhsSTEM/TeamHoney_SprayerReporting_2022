@@ -43,7 +43,7 @@
             android:name=".AdminSelection"
             android:exported="false" />
         <activity
-            android:name=".DeleteUser"
+            android:name=".ManageUsers"
             android:exported="false" />
         <activity
             android:name=".AddUser"
