@@ -16,11 +16,11 @@
     <ListView
         android:id="@+id/EntryListView"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="55dp"
         android:background="#000000"
-        android:divider="@color/material_blue_grey_800"
-        android:dividerHeight="1dp" />
+        android:divider="@color/white"
+        android:dividerHeight="3dp" />
     <LinearLayout
         android:id="@+id/LinearLayout02"
         android:layout_height="wrap_content"

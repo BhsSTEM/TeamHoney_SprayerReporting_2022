@@ -21,16 +21,6 @@
         android:focusableInTouchMode="true"
         android:onClick="close">
 
-        <Button
-            android:id="@+id/addUserToAdminButton"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Back"
-            android:textSize="20sp"
-            android:backgroundTint="#FFEB3B"
-            android:onClick="goBack"/>
-
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -59,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Mail"
+            android:hint="Email"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:background="@color/white"
@@ -107,12 +97,21 @@
 
         <Button
             android:id="@+id/submitButton"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Submit"
             android:textSize="20sp"
             android:backgroundTint="#FFEB3B" />
+        <Button
+            android:id="@+id/addUserToAdminButton"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:textSize="20sp"
+            android:backgroundTint="#FFEB3B"
+            android:onClick="goBack"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
