@@ -233,7 +233,7 @@ public class SprayEntries extends AppCompatActivity {
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "appDensity"})), rateText.getText().toString());
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "windSpeed"})), windText.getText().toString());
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "temperature"})), tempText.getText().toString());
-        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "temperature"})), humidText.getText().toString());
+        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "humidity"})), humidText.getText().toString());
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "Date"})), currentDate);
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entryId), "User"})), Integer.toString(MainActivity.currUserId));
     }
@@ -261,6 +261,11 @@ public class SprayEntries extends AppCompatActivity {
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
         updateAddPopup(popupWindow);
+
+        Button deleteBtn = popupWindow.getContentView().findViewById(R.id.deleteBtn);
+        if(!MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(MainActivity.currUserId), "Admin"}))).equals("true")) {
+            layout.removeView(deleteBtn);
+        }
 
         return popupWindow;
     }
