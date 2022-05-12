@@ -59,6 +59,7 @@ public class SprayEntries extends AppCompatActivity {
                 addEntryBtn.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         addEntry(addPopup);
+                        addPopup.dismiss();
                     }
                 });
             }

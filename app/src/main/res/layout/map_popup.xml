@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click on a field to see its name\n\nTo add a field:\n    Click add field\n    Enter a name at the bottom\n    Click on the map to add corners\n    Click save field\n\nTo delete a field:\n    Click delete field\n    click on a field\n    click exit delete mode"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:padding="15dp"/>
+    <Button
+        android:id="@+id/mapPopupBackBtn"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Back"
+        android:backgroundTint="@color/yellow"
+        android:textColor="@color/black"/>
+
+</LinearLayout>
