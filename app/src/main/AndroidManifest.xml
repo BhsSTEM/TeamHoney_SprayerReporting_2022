@@ -19,7 +19,7 @@
         android:theme="@style/Theme.TeamHoney_SprayerReporting_2022">
         <activity
             android:name=".SprayEntries"
-            android:exported="false" />
+            android:exported="false"/>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
