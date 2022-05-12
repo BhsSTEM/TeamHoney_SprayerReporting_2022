@@ -44,6 +44,7 @@ public class MapsActivity extends FragmentActivity implements
     private int interval = 1000; // 1 sec
     private Handler handler;
     private int mode;
+    private boolean popup;
 
     private GoogleMap Map;
     private ActivityMapsBinding binding;
@@ -62,6 +63,7 @@ public class MapsActivity extends FragmentActivity implements
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         mode = 0;
+        popup = false;
 
         Intent entriesIntent = new Intent(this, SprayEntries.class);
 
@@ -85,6 +87,18 @@ public class MapsActivity extends FragmentActivity implements
                     addFieldBtn.setText("Save field");
                     deleteFieldBtn.setText("Delete field");
                     findAvailableFieldId();
+                    if(!popup) {
+                        PopupWindow mapPopup = openMapPopup(view);
+                        Button mapPopupBackBtn = mapPopup.getContentView().findViewById(R.id.mapPopupBackBtn);
+                        mapPopupBackBtn.setOnClickListener(new View.OnClickListener() {
+
+                            @Override
+                            public void onClick(View view) {
+                                mapPopup.dismiss();
+                            }
+                        });
+                        popup = true;
+                    }
                 }
             }
         });
@@ -102,6 +116,18 @@ public class MapsActivity extends FragmentActivity implements
                     mode = 2;
                     addFieldBtn.setText("Add Field");
                     deleteFieldBtn.setText("Exit delete mode");
+                    if(!popup) {
+                        PopupWindow mapPopup = openMapPopup(view);
+                        Button mapPopupBackBtn = mapPopup.getContentView().findViewById(R.id.mapPopupBackBtn);
+                        mapPopupBackBtn.setOnClickListener(new View.OnClickListener() {
+
+                            @Override
+                            public void onClick(View view) {
+                                mapPopup.dismiss();
+                            }
+                        });
+                        popup = true;
+                    }
                 }
             }
         });
@@ -111,8 +137,6 @@ public class MapsActivity extends FragmentActivity implements
             layout.removeView(addFieldBtn);
             layout.removeView(deleteFieldBtn);
         }
-
-        openMapPopup();
     }
 
     @Override
@@ -244,14 +268,14 @@ public class MapsActivity extends FragmentActivity implements
         }
     }
 
-    public PopupWindow openMapPopup() {
+    public PopupWindow openMapPopup(View view) {
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.map_popup, null);
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         boolean focusable = true; // lets taps outside the popup also dismiss it
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-        //popupWindow.showAtLocation(this, Gravity.CENTER, 0, 0);
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
         return popupWindow;
     }

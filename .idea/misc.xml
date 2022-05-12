@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/Users/3x3su/Documents/Android studio Github/TeamHoney_SprayerReporting_2022/app/src/main/res/layout/activity_main.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/3x3su/Documents/Android studio Github/TeamHoney_SprayerReporting_2022/app/src/main/res/layout/activity_spray_entries.xml" value="0.1461499493414387" />
+        <entry key="..\:/Users/3x3su/Documents/Android studio Github/TeamHoney_SprayerReporting_2022/app/src/main/res/layout/add_popup.xml" value="0.11322188449848024" />
+        <entry key="..\:/Users/3x3su/Documents/Android studio Github/TeamHoney_SprayerReporting_2022/app/src/main/res/layout/custom_layout.xml" value="0.23233695652173914" />
+        <entry key="..\:/Users/3x3su/Documents/Android studio Github/TeamHoney_SprayerReporting_2022/app/src/main/res/layout/map_popup.xml" value="0.23233695652173914" />
         <entry key="..\:/Users/ejnew/AndroidStudioProjects/TeamHoney_SprayerReporting_2022/app/src/main/res/layout/map_popup.xml" value="0.18333333333333332" />
         <entry key="..\:/Users/ejnew/AndroidStudioProjects/TeamHoney_SprayerReporting_2022/app/src/main/res/layout/maps_popup.xml" value="0.33" />
         <entry key="..\:/Users/jakeb/AndroidStudioProjects/TeamHoney_SprayerReporting_2022/app/src/main/res/layout/activity_add_user.xml" value="0.18432971014492755" />
@@ -30,7 +33,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -12,5 +12,12 @@
         android:textColor="@color/black"
         android:textSize="28sp"
         android:padding="15dp"/>
+    <Button
+        android:id="@+id/mapPopupBackBtn"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Back"
+        android:backgroundTint="@color/yellow"
+        android:textColor="@color/black"/>
 
 </LinearLayout>
