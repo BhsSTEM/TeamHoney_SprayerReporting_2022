@@ -8,12 +8,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -108,6 +111,8 @@ public class MapsActivity extends FragmentActivity implements
             layout.removeView(addFieldBtn);
             layout.removeView(deleteFieldBtn);
         }
+
+        openMapPopup();
     }
 
     @Override
@@ -237,6 +242,18 @@ public class MapsActivity extends FragmentActivity implements
                 i = fieldIds.size();
             }
         }
+    }
+
+    public PopupWindow openMapPopup() {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.map_popup, null);
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        //popupWindow.showAtLocation(this, Gravity.CENTER, 0, 0);
+
+        return popupWindow;
     }
 
     public void goBack(View view) {
