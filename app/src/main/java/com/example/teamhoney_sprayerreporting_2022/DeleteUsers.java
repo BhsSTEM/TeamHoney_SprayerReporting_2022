@@ -54,36 +54,38 @@ public class DeleteUsers extends AppCompatActivity {
     }
 
     public void updateUsers() {
-        ArrayList<userFetch> entries = getUsers();
-        writeToChart(entries);
+        ArrayList<userFetch> users = getUsers();
+        Log.d("j", users.get(0).name);
+        writeToChart(users);
     }
     public ArrayList<userFetch> getUsers() {
-        ArrayList<userFetch> entries = new ArrayList<userFetch>();
-        ArrayList<String> entryIdList = MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Users"})));
+        ArrayList<userFetch> users = new ArrayList<userFetch>();
+        ArrayList<String> userIdList = MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Users"})));
 
-        for(int i = 0; i < entryIdList.size(); i++) {
-            userFetch entry = new userFetch();
-            entry.address = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", entryIdList.get(i), "Address"})));
-            entry.admin = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", entryIdList.get(i), "Admin"})));
-            entry.email = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", entryIdList.get(i), "Email"})));
-            entry.password = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", entryIdList.get(i), "Password"})));
-            entry.name = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", entryIdList.get(i), "Name"})));
-            entries.add(entry);
+        for(int i = 0; i < userIdList.size(); i++) {
+            userFetch user = new userFetch();
+            user.address = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIdList.get(i), "Address"})));
+            user.admin = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIdList.get(i), "Admin"})));
+            user.email = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIdList.get(i), "Email"})));
+            user.password = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIdList.get(i), "Password"})));
+            user.name = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIdList.get(i), "Name"})));
+            users.add(user);
         }
-        return entries;
+        return users;
     }
-    public void writeToChart(ArrayList<userFetch> entries) {
-        String[] entryTexts = new String[entries.size()];
-        for(int i = 0; i < entries.size(); i++) {
-            userFetch entryVals = entries.get(i).getEntryVals();
+    public void writeToChart(ArrayList<userFetch> users) {
+        String[] entryTexts = new String[users.size()];
+        for(int i = 0; i < users.size(); i++) {
+            userFetch userVals = users.get(i); //users.get(i).getUserVals();
             String entryText =
-                    entryVals.name + " " +
-                    entryVals.email + " " +
-                    entryVals.password + " " +
-                    entryVals.address + " " +
-                    entryVals.admin;
+                    userVals.name + " " +
+                    userVals.email + " " +
+                    userVals.password + " " +
+                    userVals.address + " " +
+                    userVals.admin;
             entryTexts[i] = entryText;
         }
+        Log.d("h", entryTexts[0]);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.entry_chart_text_format, R.id.entryText, entryTexts);
         userList.setAdapter(arrayAdapter);
     }

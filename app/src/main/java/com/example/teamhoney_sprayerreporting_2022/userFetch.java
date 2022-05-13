@@ -15,7 +15,7 @@ public class userFetch {
         IdOrVal = false;
     }
 
-    public userFetch getEntryVals() {
+    public userFetch getUserVals() {
         userFetch entryVals = new userFetch();
         if(IdOrVal == false) {
             entryVals.admin = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Admin", admin})));
