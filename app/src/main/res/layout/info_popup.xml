@@ -55,6 +55,16 @@
         android:textSize="25sp"
         android:layout_marginBottom="10dp"/>
 
+        <TextView
+            android:id="@+id/rateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rate of application:"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"/>
+
     <TextView
         android:id="@+id/appMethodText"
         android:layout_width="wrap_content"
@@ -62,8 +72,9 @@
         android:text="Method"
         android:textAllCaps="false"
         android:textColor="#000000"
-        android:textSize="30sp"
-        android:layout_marginBottom="10dp"/>
+        android:textSize="28sp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/fieldText"
@@ -73,15 +84,6 @@
         android:textColor="#000000"
         android:textSize="30sp"
         android:layout_marginBottom="10dp"/>
-
-        <TextView
-            android:id="@+id/rateText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rate of application:"
-            android:textColor="#000000"
-            android:textSize="30sp"
-            android:layout_marginBottom="10dp"/>
 
         <TextView
             android:id="@+id/weatherInfo"

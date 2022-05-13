@@ -62,6 +62,13 @@ public class SprayEntries extends AppCompatActivity {
                         addPopup.dismiss();
                     }
                 });
+
+                /*Button addCloseBtn = (Button) addPopup.getContentView().findViewById(R.id.closeBtn);
+                addEntryBtn.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        addPopup.dismiss();
+                    }
+                });*/
             }
         });
 
@@ -141,6 +148,10 @@ public class SprayEntries extends AppCompatActivity {
             entry.date = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", entryIdList.get(i), "Date"})));
             entry.field = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", entryIdList.get(i), "Field"})));
             entry.user = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", entryIdList.get(i), "User"})));
+            entry.humidity = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", entryIdList.get(i), "humidity"})));
+            entry.rate = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", entryIdList.get(i), "appDensity"})));
+            entry.temp = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", entryIdList.get(i), "temperature"})));
+            entry.wind = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", entryIdList.get(i), "windSpeed"})));
             entries.add(entry);
         }
         return entries;
@@ -202,6 +213,10 @@ public class SprayEntries extends AppCompatActivity {
         TextView EPAText = popupWindow.getContentView().findViewById(R.id.EPAText);
         TextView fieldText = popupWindow.getContentView().findViewById(R.id.fieldText);
         TextView appMethodText = popupWindow.getContentView().findViewById(R.id.appMethodText);
+        TextView rateText = popupWindow.getContentView().findViewById(R.id.rateText);
+        TextView humidText = popupWindow.getContentView().findViewById(R.id.humidText);
+        TextView tempText = popupWindow.getContentView().findViewById(R.id.tempText);
+        TextView windText = popupWindow.getContentView().findViewById(R.id.weatherText);
 
         ArrayList<SprayEntry> entries = getEntries();
 
@@ -213,7 +228,11 @@ public class SprayEntries extends AppCompatActivity {
         actInText.setText(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Chemicals", entries.get(entryId).chemical, "ActIn"}))));
         EPAText.setText(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Chemicals", entries.get(entryId).chemical, "EPA"}))));
         fieldText.setText("Field: " + entryVals.field);
-        appMethodText.setText("Method: " + entryVals.appMethod);
+        appMethodText.setText("Application Method\n" + entryVals.appMethod);
+        rateText.setText(entryVals.rate + " Gal/Acre");
+        humidText.setText("Humidity\n " + entryVals.humidity + "%");
+        tempText.setText("Temp\n " + entryVals.temp + "F");
+        windText.setText("Wind speed\n " + entryVals.wind + " MPH");
     }
 
     public void addEntry(PopupWindow popupWindow) {
@@ -293,6 +312,10 @@ public class SprayEntries extends AppCompatActivity {
             MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i), "Date"})), MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i + 1), "Date"}))));
             MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i), "Field"})), MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i + 1), "Field"}))));
             MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i), "User"})), MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i + 1), "User"}))));
+            MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i), "appDensity"})), MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i + 1), "appDensity"}))));
+            MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i), "temperature"})), MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i + 1), "temperature"}))));
+            MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i), "humidity"})), MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i + 1), "humidity"}))));
+            MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i), "windSpeed"})), MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(i + 1), "windSpeed"}))));
         }
         MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Entries", Integer.toString(entries.size() - 1)})), null);
     }
