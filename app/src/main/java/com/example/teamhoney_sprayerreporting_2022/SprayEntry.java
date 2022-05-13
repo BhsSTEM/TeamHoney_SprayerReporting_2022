@@ -10,7 +10,10 @@ public class SprayEntry {
     public String date;
     public String field;
     public String user;
-    public String weather;
+    public String rate;
+    public String wind;
+    public String temp;
+    public String humidity;
     public boolean IdOrVal;     //false for id state, true for val state
 
     public SprayEntry() {
@@ -26,8 +29,11 @@ public class SprayEntry {
             entryVals.address = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Addresses", address})));
             entryVals.field = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Fields", field, "Name"})));
             entryVals.user = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", user, "Name"})));
-            entryVals.weather = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Weather", weather})));
             entryVals.IdOrVal = true;
+            entryVals.rate = this.rate;
+            entryVals.humidity = this.humidity;
+            entryVals.wind = this.wind;
+            entryVals.temp = this.temp;
         }
         return entryVals;
     }
