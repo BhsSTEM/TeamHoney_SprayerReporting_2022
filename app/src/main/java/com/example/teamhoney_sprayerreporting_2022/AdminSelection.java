@@ -31,7 +31,7 @@ public class AdminSelection extends AppCompatActivity {
     }
 
     public void openDeleteUser(View view) {
-        Intent intent = new Intent(this, ManageUsers.class);
+        Intent intent = new Intent(this, DeleteUsers.class);
         startActivity(intent);
     }
 
