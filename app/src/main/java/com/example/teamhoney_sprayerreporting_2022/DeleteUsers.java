@@ -2,12 +2,22 @@ package com.example.teamhoney_sprayerreporting_2022;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +27,7 @@ public class DeleteUsers extends AppCompatActivity {
     ListView userList;
     private Handler handler;
     private int interval = 1000;
+    private int selectedEntry = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +69,8 @@ public class DeleteUsers extends AppCompatActivity {
         Log.d("j", users.get(0).name);
         writeToChart(users);
     }
+
+
     public ArrayList<userFetch> getUsers() {
         ArrayList<userFetch> users = new ArrayList<userFetch>();
         ArrayList<String> userIdList = MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Users"})));
@@ -73,15 +86,16 @@ public class DeleteUsers extends AppCompatActivity {
         }
         return users;
     }
+
     public void writeToChart(ArrayList<userFetch> users) {
         String[] entryTexts = new String[users.size()];
         for(int i = 0; i < users.size(); i++) {
             userFetch userVals = users.get(i); //users.get(i).getUserVals();
             String entryText =
-                    userVals.name + " " +
-                    userVals.email + " " +
-                    userVals.password + " " +
-                    userVals.address + " " +
+                    userVals.name + " | " +
+                    userVals.email + " | " +
+                    userVals.password + " | " +
+                    userVals.address + " | " +
                     userVals.admin;
             entryTexts[i] = entryText;
         }
@@ -89,5 +103,6 @@ public class DeleteUsers extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.entry_chart_text_format, R.id.entryText, entryTexts);
         userList.setAdapter(arrayAdapter);
     }
+
 
 }
