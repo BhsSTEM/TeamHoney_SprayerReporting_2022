@@ -19,6 +19,8 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -36,6 +38,24 @@ public class DeleteUsers extends AppCompatActivity {
         userList = (ListView) findViewById(R.id.userListView);
         handler = new Handler();
         startUpdating();
+
+        userList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int clickPos, long l) {
+                PopupWindow deletePopup = openDeletePopup(view, clickPos);
+
+                Button deleteBtn = deletePopup.getContentView().findViewById(R.id.deleteBtn);
+
+                deleteBtn.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        deleteUser(clickPos);
+                        deletePopup.dismiss();
+                    }
+                });
+            }
+        });
 
     }
     @Override
@@ -66,10 +86,51 @@ public class DeleteUsers extends AppCompatActivity {
 
     public void updateUsers() {
         ArrayList<userFetch> users = getUsers();
-        Log.d("j", users.get(0).name);
         writeToChart(users);
     }
 
+    public PopupWindow openDeletePopup(View view, int clickPos) {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.delete_popup, null);
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+        updateDeletePopup(popupWindow, clickPos);
+
+        return popupWindow;
+    }
+
+    public void updateDeletePopup(PopupWindow popupWindow, int clickPos) {
+        TextView nameText = popupWindow.getContentView().findViewById(R.id.nameText);
+        TextView emailText = popupWindow.getContentView().findViewById(R.id.emailText);
+        TextView passwordText = popupWindow.getContentView().findViewById(R.id.passwordText);
+        TextView addressText = popupWindow.getContentView().findViewById(R.id.addressText);
+        TextView adminText = popupWindow.getContentView().findViewById(R.id.adminText);
+
+        userFetch user = getUsers().get(clickPos);
+
+        nameText.setText("Name: " + user.name);
+        emailText.setText("Email: " + user.email);
+        passwordText.setText("Password: " + user.password);
+        addressText.setText("Address: " + user.address);
+        if(user.admin.equals("true")) {
+            adminText.setText("Admin");
+        } else {
+            adminText.setText("");
+        }
+    }
+
+    public void deleteUser(int clickPos) {
+        ArrayList<String> userIds =  MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Users"})));
+        String selectedUser = userIds.get(clickPos);
+        MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", selectedUser})), null);
+        if(Integer.parseInt(selectedUser) == MainActivity.currUserId) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+    }
 
     public ArrayList<userFetch> getUsers() {
         ArrayList<userFetch> users = new ArrayList<userFetch>();
@@ -95,11 +156,12 @@ public class DeleteUsers extends AppCompatActivity {
                     userVals.name + " | " +
                     userVals.email + " | " +
                     userVals.password + " | " +
-                    userVals.address + " | " +
-                    userVals.admin;
+                    userVals.address;
+            if(userVals.admin.equals("true")) {
+                entryText = entryText + " | Admin";
+            }
             entryTexts[i] = entryText;
         }
-        Log.d("h", entryTexts[0]);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.entry_chart_text_format, R.id.entryText, entryTexts);
         userList.setAdapter(arrayAdapter);
     }

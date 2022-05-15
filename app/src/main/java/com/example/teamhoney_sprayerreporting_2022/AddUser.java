@@ -50,6 +50,11 @@ public class AddUser extends AppCompatActivity {
                     MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(slot), "Address"})), addressInput.getText().toString());
                     MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(slot), "Password"})), passwordInput.getText().toString());
                     MainActivity.dataBase.write(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(slot), "Admin"})), Boolean.toString(adminSwitch.isChecked()));
+                    nameInput.setText("");
+                    emailInput.setText("");
+                    addressInput.setText("");
+                    passwordInput.setText("");
+                    adminSwitch.setChecked(false);
                 }
             }
         });
