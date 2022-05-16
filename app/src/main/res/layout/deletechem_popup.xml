@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/white"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/nameTextChem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name: "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/actInTextChem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email: "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/EPATextChem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EPA"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_margin="10dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center">
+        <Button
+            android:id="@+id/backChemBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/yellow"
+            android:textColor="@color/black"
+            android:text="Close"
+            android:layout_marginEnd="15dp"/>
+        <Button
+            android:id="@+id/deleteChemBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/yellow"
+            android:textColor="@color/black"
+            android:text="Delete"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
