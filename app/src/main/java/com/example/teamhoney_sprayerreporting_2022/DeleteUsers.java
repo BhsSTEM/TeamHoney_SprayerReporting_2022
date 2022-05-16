@@ -105,7 +105,6 @@ public class DeleteUsers extends AppCompatActivity {
     public void updateDeletePopup(PopupWindow popupWindow, int clickPos) {
         TextView nameText = popupWindow.getContentView().findViewById(R.id.nameText);
         TextView emailText = popupWindow.getContentView().findViewById(R.id.emailText);
-        TextView passwordText = popupWindow.getContentView().findViewById(R.id.passwordText);
         TextView addressText = popupWindow.getContentView().findViewById(R.id.addressText);
         TextView adminText = popupWindow.getContentView().findViewById(R.id.adminText);
 
@@ -113,7 +112,6 @@ public class DeleteUsers extends AppCompatActivity {
 
         nameText.setText("Name: " + user.name);
         emailText.setText("Email: " + user.email);
-        passwordText.setText("Password: " + user.password);
         addressText.setText("Address: " + user.address);
         if(user.admin.equals("true")) {
             adminText.setText("Admin");
@@ -141,7 +139,6 @@ public class DeleteUsers extends AppCompatActivity {
             user.address = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIdList.get(i), "Address"})));
             user.admin = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIdList.get(i), "Admin"})));
             user.email = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIdList.get(i), "Email"})));
-            user.password = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIdList.get(i), "Password"})));
             user.name = MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", userIdList.get(i), "Name"})));
             users.add(user);
         }
@@ -155,7 +152,6 @@ public class DeleteUsers extends AppCompatActivity {
             String entryText =
                     userVals.name + " | " +
                     userVals.email + " | " +
-                    userVals.password + " | " +
                     userVals.address;
             if(userVals.admin.equals("true")) {
                 entryText = entryText + " | Admin";
