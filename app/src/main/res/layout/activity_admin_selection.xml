@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
             android:onClick="openAddUser"
-            android:text="Add User"/>
+            android:text="Add A User"/>
         <Button
             android:id="@+id/delete_button"
             android:layout_width="200dp"
@@ -47,6 +47,20 @@
             android:backgroundTint="#FFEB3B"
             android:onClick="openDeleteUser"
             android:text="Manage Users"/>
+        <Button
+            android:id="@+id/addChem_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFEB3B"
+            android:onClick="openAddChem"
+            android:text="Add A Chemical"/>
+        <Button
+            android:id="@+id/deleteChem_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFEB3B"
+            android:onClick="openDeleteChem"
+            android:text="Manage Chemicals"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,6 +70,7 @@
             android:layout_marginTop="30dp"
             android:onClick="signOut"
             />
+
 
     </LinearLayout>
 

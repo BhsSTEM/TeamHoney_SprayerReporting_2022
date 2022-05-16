@@ -35,6 +35,16 @@ public class AdminSelection extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openAddChem(View view) {
+        Intent intent = new Intent(this, AddChemical.class);
+        startActivity(intent);
+    }
+
+    public void openDeleteChem(View view) {
+        Intent intent = new Intent(this, DeleteChemicals.class);
+        startActivity(intent);
+    }
+
     public void signOut(View view) {
         super.finish();
     }

@@ -8,7 +8,7 @@
 
     <uses-permission android:name="com.app.TeamHoney_SprayerReporting_2022.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -18,8 +18,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamHoney_SprayerReporting_2022">
         <activity
+            android:name=".DeleteChemicals"
+            android:exported="false" />
+        <activity
+            android:name=".AddChemical"
+            android:exported="false" />
+        <activity
             android:name=".SprayEntries"
-            android:exported="false"/>
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
