@@ -110,8 +110,8 @@ public class DeleteChemicals extends AppCompatActivity {
         Chemical chemical = getChemicals().get(clickPos);
 
         nameText.setText("Name: " + chemical.name);
-        emailText.setText("Email: " + chemical.actIn);
-        addressText.setText("Address: " + chemical.epa);
+        emailText.setText("Active Ingredient/s: " + chemical.actIn);
+        addressText.setText("EPA #: " + chemical.epa);
     }
 
     public void deleteChemical(int clickPos) {
