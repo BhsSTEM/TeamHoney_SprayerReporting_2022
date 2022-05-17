@@ -154,7 +154,10 @@ public class DeleteUsers extends AppCompatActivity {
                     userVals.email + " | " +
                     userVals.address;
             if(userVals.admin.equals("true")) {
-                entryText = entryText + " | Admin";
+                entryText = entryText + " | Admin: True";
+            }
+            else{
+                entryText = entryText + " | Admin: False";
             }
             entryTexts[i] = entryText;
         }
