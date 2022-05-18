@@ -5,6 +5,8 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -32,6 +34,7 @@ import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -227,11 +230,19 @@ public class MapsActivity extends FragmentActivity implements
     @Override
     public void onMapReady(GoogleMap googleMap) {
         Map = googleMap;
-        // Add a marker in Sydney and move the camera
-        LatLng QC = new LatLng(41.53, -90.51);;
-        Map.moveCamera(CameraUpdateFactory.newLatLng(QC));
+
         googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         startUpdating();
+        Location loc = new Location("3800 E 53rd St, Davenport, IA 52807");
+        Geocoder geocoder = new Geocoder(this);
+
+        try {
+            Log.d("y", Double.toString(geocoder.getFromLocationName("3800 E 53rd St, Davenport, IA 52807", 1).get(0).getLatitude()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        LatLng zoom = new LatLng(loc.getLatitude(), loc.getLongitude());
+        Map.moveCamera(CameraUpdateFactory.newLatLng(zoom));
 
         Map.setOnMapClickListener(new GoogleMap.OnMapClickListener(){
             @Override
