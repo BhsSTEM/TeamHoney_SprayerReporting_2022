@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="Click on a field to see its name\n\nTo add a field:\n    Click add field\n    Enter a name at the bottom\n    Click on the map to add corners\n    Click save field\n\nTo delete a field:\n    Click delete field\n    click on a field\n    click exit delete mode"
         android:textColor="@color/black"
-        android:textSize="28sp"
+        android:textSize="25sp"
         android:padding="15dp"/>
     <Button
         android:id="@+id/mapPopupBackBtn"

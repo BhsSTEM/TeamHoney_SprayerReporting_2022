@@ -36,19 +36,6 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:layout_margin="10dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center">
-        <Button
-            android:id="@+id/backChemBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/yellow"
-            android:textColor="@color/black"
-            android:text="Close"
-            android:layout_marginEnd="15dp"/>
         <Button
             android:id="@+id/deleteChemBtn"
             android:layout_width="wrap_content"
@@ -56,7 +43,6 @@
             android:backgroundTint="@color/yellow"
             android:textColor="@color/black"
             android:text="Delete"/>
-        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

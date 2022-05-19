@@ -50,13 +50,6 @@
             android:layout_gravity="center"
             android:gravity="center">
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/yellow"
-            android:textColor="@color/black"
-            android:text="Close"
-            android:layout_marginEnd="15dp"/>
-        <Button
             android:id="@+id/deleteBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
