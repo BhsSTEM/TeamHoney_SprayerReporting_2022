@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class MapsActivity extends FragmentActivity implements
         OnMapReadyCallback,
@@ -57,7 +59,6 @@ public class MapsActivity extends FragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         handler = new Handler();
-
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -233,16 +234,18 @@ public class MapsActivity extends FragmentActivity implements
 
         googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         startUpdating();
-        Location loc = new Location("3800 E 53rd St, Davenport, IA 52807");
         Geocoder geocoder = new Geocoder(this);
 
         try {
-            Log.d("y", Double.toString(geocoder.getFromLocationName("3800 E 53rd St, Davenport, IA 52807", 1).get(0).getLatitude()));
+            Address address = geocoder.getFromLocationName(MainActivity.dataBase.data.getValueAt(new ArrayList<String>(Arrays.asList(new String[]{"Users", Integer.toString(MainActivity.currUserId), "Address"}))), 1).get(0);
+            LatLng zoom = new LatLng(address.getLatitude(), address.getLongitude());
+            float zoomLevel = 16.0f; //This goes up to 21
+            Map.moveCamera(CameraUpdateFactory.newLatLngZoom(zoom, zoomLevel));
+            //Log.d("y", Double.toString(geocoder.getFromLocationName("3800 E 53rd St, Davenport, IA 52807", 1).get(0).getLatitude()));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        LatLng zoom = new LatLng(loc.getLatitude(), loc.getLongitude());
-        Map.moveCamera(CameraUpdateFactory.newLatLng(zoom));
+
 
         Map.setOnMapClickListener(new GoogleMap.OnMapClickListener(){
             @Override

@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity{
 
     public void signIn(View view) {
         ArrayList<String> userIds = MainActivity.dataBase.data.getPathsAt(new ArrayList<String>(Arrays.asList(new String[]{"Users"})));
-        Log.d("userId", userIds.get(0));
         ArrayList<String> emails = new ArrayList<String>();
         ArrayList<String> passwords = new ArrayList<String>();
         ArrayList<String> admins = new ArrayList<String>();
